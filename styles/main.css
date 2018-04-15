@@ -22,7 +22,7 @@ body {
     font-size: 30px;
 }
 
-#countdown {
+.countdown {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -35,7 +35,7 @@ body {
     font-size: 60px;
 }
 
-#work-time, #break-time {
+.work-time, .break-time {
     display: flex;
     flex-direction: column;
 }
