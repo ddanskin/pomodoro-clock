@@ -1,7 +1,7 @@
 # pomodoro-clock
 
 # Project Title
-Pomodoro Clock
+[Pomodoro Clock](https://ddanskin.github.io/pomodoro-clock/)
 
 # Motivation
 To build a pomodoro timer with adjustable wok and break timer settings
