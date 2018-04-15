@@ -1,8 +1,12 @@
 body {
-    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
     display: flex;
-    flex-direction: row;
-    background: #000;
+    flex-direction: column;
+    background: #000000;
     color:#ffffff;
     font-family: monospace;
     text-align: center;
@@ -13,13 +17,14 @@ body {
     background: grey;
 }
 
-#time-controls{
+.time-controls {
     display: flex;
     flex-direction: row;
     align-items: space-around;
-    padding: 25px;
+    padding: 5vw;
     margin: auto;
-    font-size: 30px;
+    font-size: 1em;
+    color: #ffffff;
 }
 
 .countdown {
@@ -27,12 +32,12 @@ body {
     flex-direction: column;
     margin: auto;
     background: #009900;
-    color: #fff;
+    color: #ffffff;
     font-weight: bolder;
     border-radius: 50%;
-    height: 400px;
-    width: 400px;
-    font-size: 60px;
+    height: 50vw;
+    width: 50vw;
+    font-size: 3em;
 }
 
 .work-time, .break-time {
@@ -43,13 +48,13 @@ body {
 button {
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 2em;
     padding: 4px;
+    color: #ffffff;
 }
 
 #reset {
-    position: absolute;
     display: flex;
     justify-content: center;
-    font-size: 24px;
+    font-size: 2em;
 }
