@@ -1,55 +1,51 @@
 <!DOCTYPE html5>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width initial-scale=1.0">
-<title>Pomodoro Clock</title>
-<link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-<div class="container-fluid">
-  <div id="title">
-    <h1>Pomodoro Clock</h1>
-  </div>
-  <div>
-    <div class="row" id="time-controls">
-      <div class="col-md-6" id="break-time">
-      <p>set break</p>  
-      <div>
-        <button type="button" class="adjustBreak" id="bP" onclick='setTimer("bP")'>+</button>
-        <span id="breakT"></span>
-        <button type="button" class="adjustBreak" id="bM" onclick='setTimer("bM")'>-</button>
-        
-      </div>
-    </div>
-      <div class="col-md-6" id="work-time">
-        <p>set work</p>
-        <div>
-          <button type="button" class="adjustWork" id="wP" onclick='setTimer("wP")'>+</button>
-          <span id="workT"></span>
-          <button type="button" class="adjustWork" id="wM" onclick='setTimer("wM")'>-</button>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Pomodoro Clock</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="title">
+                <h1>Pomodoro Clock</h1>
+            </div>
+            <div class="row" id="time-controls">
+                <div class="col-md-6" id="break-time">
+                    <p>set break</p>  
+                    <div>
+                        <button type="button" class="adjustBreak" id="bP">+</button>
+                        <span id="breakT"></span>
+                        <button type="button" class="adjustBreak" id="bM">-</button>
+                    </div>
+                </div>
+                <div class="col-md-6" id="work-time">
+                    <p>set work</p>
+                    <div>
+                        <button type="button" class="adjustWork" id="wP">+</button>
+                        <span id="workT"></span>
+                        <button type="button" class="adjustWork" id="wM">-</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="countdown">
+                    <h1 id="session"></h1>
+                    <p id="pause">></p>
+                    <span>
+                        <p id="timer">00:00</p>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <a href"#" id="reset">reset</a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4" id="countdown">
-      <h1 id="session"></h1>
-      <p id="pause">></p>
-      <span>
-        <p id="timer">00:00</p>
-      </span>
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <a href"#" id="reset">reset</a>
-    </div>
-  </div>
-</div>
-<script src="scripts/main.js"></script>
-</body>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+            <script src="scripts/main.js"></script>
+    </body>
 </html>
