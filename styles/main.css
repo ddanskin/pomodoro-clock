@@ -17,7 +17,7 @@ body {
     background: grey;
 }
 
-.time-controls {
+.timeControls {
     display: flex;
     flex-direction: row;
     align-items: space-around;
@@ -27,7 +27,7 @@ body {
     color: #ffffff;
 }
 
-.countdown {
+#countdown {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -40,7 +40,7 @@ body {
     font-size: 3em;
 }
 
-.work-time, .break-time {
+.workTime, .breakTime {
     display: flex;
     flex-direction: column;
 }

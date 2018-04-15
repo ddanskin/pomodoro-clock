@@ -16,7 +16,7 @@
                     <p>set break</p>  
                     <div>
                         <button type="button" class="adjustBreak" id="bP">+</button>
-                        <span id="breakT"></span>
+                        <span id="breakCount"></span>
                         <button type="button" class="adjustBreak" id="bM">-</button>
                     </div>
                 </div>
@@ -24,13 +24,13 @@
                     <p>set work</p>
                     <div>
                         <button type="button" class="adjustWork" id="wP">+</button>
-                        <span id="workT"></span>
+                        <span id="workCount"></span>
                         <button type="button" class="adjustWork" id="wM">-</button>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="countdown">
+                <div id="countdown">
                     <h1 id="session"></h1>
                     <p id="pause">></p>
                     <div><p id="timer">00:00</p></div>
@@ -40,6 +40,10 @@
                 <a id="reset">reset</a>
             </div>
         </div>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
         <script src="scripts/main.js"></script>
     </body>
 </html>
