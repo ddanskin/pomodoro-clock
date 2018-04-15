@@ -1,7 +1,12 @@
 body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: #000;
     color:#ffffff;
     font-family: monospace;
@@ -13,13 +18,14 @@ body {
     background: grey;
 }
 
-#time-controls{
+.time-controls {
     display: flex;
     flex-direction: row;
     align-items: space-around;
     padding: 25px;
     margin: auto;
-    font-size: 30px;
+    font-size: 3em;
+    color: #fff;
 }
 
 .countdown {
@@ -45,6 +51,7 @@ button {
     border: none;
     font-size: 28px;
     padding: 4px;
+    color: #fff;
 }
 
 #reset {
