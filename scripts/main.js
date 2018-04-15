@@ -11,43 +11,43 @@ let soundFile = new Audio("http://soundbible.com/mp3/Spit_Splat-Mike_Koenig-1170
 
 reset();
 
+// takes button id as arguent and based on the name passed will update the appropriate timer
 function setTimer(btn) {
     let b = btn;
-    
     if (b == "bP"){
         bTime++;
 
         if (bTime == 2) {
-            document.getElementById("bM").disabled = false;
+            $("#bM").prop("disabled", false);
         }
 
-        document.getElementById("breakT").innerHTML = bTime;
+        $("#breakCount").text(bTime);
    
     } else if (b == "wP") {
         wTime++;
         
         if (wTime == 2) {
-            document.getElementById("wM").disabled = false;
+            $("#wM").prop("disabled", false);
         }
         
-        document.getElementById("workT").innerHTML = wTime;
+        $("#workCount").text(wTime);
    
     } else if (b == "bM") {
         bTime--;
     
         if (bTime == 1) {
-            document.getElementById("bM").disabled = true;
+            $("#bM").prop("disabled", true);
         }
         
-        document.getElementById("breakT").innerHTML = bTime;
+        $("#breakCount").text(bTime);
     
     } else if (b == "wM") {
         wTime--;
     
         if (wTime == 1) {
-            document.getElementById("wM").disabled = true;
+            $("#wM").prop("disabled", true);
         }
-        document.getElementById("workT").innerHTML = wTime;
+        $("#workCount").text(wTime);
     }
     
     if (clockPaused && workTime) {
@@ -58,34 +58,7 @@ function setTimer(btn) {
     }
 }
 
-let setterElements = document.getElementsByClassName("adjustBreak, adjustWork");
-Array.from(setterElements, setter => setter.addEventListener('click', function(){
-    setTimer(setter.id);
-});
-
-document.getElementById("countdown").addEventListener("click", function() {
-    
-    if (clockPaused && firstSession) {
-        document.getElementById("pause").innerHTML = "||";
-        startTimer(t * 60);
-        firstSession = false;
-    
-    } else if (clockPaused) {
-        document.getElementById("pause").innerHTML = "||";
-        startTimer(counter);
-    
-    } else {
-        document.getElementById("pause").innerHTML = ">";
-    
-    }
-
-    clockPaused = !clockPaused;
-});
-
-document.getElementById("reset").addEventListener("click", function() {
-    reset(wTime);
-});
-
+// resets timer to default settings
 function reset() {
     workTime = true;
     clockPaused = true;
@@ -98,6 +71,7 @@ function reset() {
     updateDisplay();
 }
 
+// start countdown timer, if session ends, starts next session
 function startTimer(x) {
     counter = x;
     updateDisplay();
@@ -109,17 +83,18 @@ function startTimer(x) {
             counter--;
             minutes = Math.floor(counter / 60);
             seconds = Math.floor(counter % 60);
-            document.getElementById("timer").innerHTML = addZero(minutes, 2) + ":" + addZero(seconds, 2);
+            $("#timer").text(addZero(minutes, 2) + ":" + addZero(seconds, 2));
             
+            // if time ends, play sound and switch to other timer
             if (counter == 0) {
                 soundFile.play();
-                
                 if (workTime) {
                     t = bTime;
                 } else {
                     t = wTime;
                 }
-                document.getElementById("timer").innerHTML = addZero(minutes, 2) + ":" + addZero(seconds, 2);
+                // update counter
+                $("#timer").text(addZero(minutes, 2) + ":" + addZero(seconds, 2));
                 workTime = !workTime;
                 clearInterval(interval);
                 startTimer(t * 60);
@@ -128,19 +103,53 @@ function startTimer(x) {
     }, 1000);
 }
 
+// update the display with current timer status
 function updateDisplay() {
-    document.getElementById("workT").innerHTML = wTime;
-    document.getElementById("breakT").innerHTML = bTime;
-    document.getElementById("pause").innerHTML = clock_paused ? ">" : "||";
-    document.getElementById("session").innerHTML = workTime ? "WORK" : "BREAK";
-    document.getElementById("countdown").style.background = workTime ? '#009900' : '#ff6347';
-    document.getElementById("countdown").style.border = workTime ? '4px solid #99f000' : '4px solid #cc0000';
-    document.getElementById("timer").innerHTML = addZero(minutes, 2) + ":" + addZero(seconds, 2);
+    $("#workCount").text(wTime);
+    $("#breakCount").text(bTime);
+    $("#pause").text(clockPaused ? ">" : "||");
+    $("#session").text(workTime ? "WORK" : "BREAK");
+    let backgroundColor = workTime ? '#009900' : '#ff6347';
+    let borderSetting =  workTime ? '4px solid #99f000' : '4px solid #cc0000';
+    $("#countdown").css({"background-color": backgroundColor, "border": borderSetting});
+    $("#timer").text(addZero(minutes, 2) + ":" + addZero(seconds, 2));
 }
 
+// add zeros to timer so it always as two places for seconds count
 function addZero(x, n) {
     while (x.toString().length < n) {
         x = "0" + x;
     }
     return x;
 }
+
+// each setter (+ or - button) is given a click event that calls setTimer function with its id
+$(".adjustBreak, .adjustWork").click(function() {
+    setTimer(this.id);
+});
+
+// when the countdown timer is clicked, the timer is paused or unpaused
+$("#countdown").click(function() {
+    
+    if (clockPaused && firstSession) {
+        $("#pause").text("||");
+        startTimer(t * 60);
+        firstSession = false;
+    
+    } else if (clockPaused) {
+        $("#pause").text("||");
+        startTimer(counter);
+    
+    } else {
+        $("#pause").text(">");
+    
+    }
+
+    clockPaused = !clockPaused;
+});
+
+// when reset button is clicked the reset function is called
+$("#reset").click(function() {
+    reset(wTime);
+});
+
